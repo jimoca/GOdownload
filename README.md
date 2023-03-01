@@ -22,7 +22,7 @@ $ go run main.go [-r] -path <path>
 Usage: main [-r] -path <path> 
 
 Options:
--r      Use reader or not when reading files
+-r      Use bufio reader when reading files
 -path string
         Path to the files folder in this project
 ```
