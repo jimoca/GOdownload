@@ -62,6 +62,8 @@ func downloadFile(w http.ResponseWriter, r *http.Request) {
 }
 
 func readFileWithoutReader(path string) (buffer *bytes.Buffer) {
+	start := time.Now()
+	log.Printf("Start to read file")
 
 	file, err := os.Open(path)
 	if err != nil {
@@ -86,10 +88,14 @@ func readFileWithoutReader(path string) (buffer *bytes.Buffer) {
 	} else {
 		err = nil
 	}
+	elapsed := time.Since(start)
+	log.Printf("Read file without bufio reader took %s", elapsed)
 	return
 }
 
 func readFileWithReader(path string) (buffer *bytes.Buffer) {
+	start := time.Now()
+	log.Printf("Start to read file")
 
 	file, err := os.Open(path)
 	if err != nil {
@@ -115,6 +121,8 @@ func readFileWithReader(path string) (buffer *bytes.Buffer) {
 	} else {
 		err = nil
 	}
+	elapsed := time.Since(start)
+	log.Printf("Read file with bufio reader took %s", elapsed)
 	return
 }
 
